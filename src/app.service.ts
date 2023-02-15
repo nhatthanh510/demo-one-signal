@@ -1,12 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import * as OneSignal from '@onesignal/node-onesignal';
 
-const ONESIGNAL_REST_API_KEY =
-  process.env.ONESIGNAL_REST_API_KEY ||
-  'MDFjZDBjZTctODIwMy00NzNjLWFlOGQtZTZkOTBlM2E5YWIw';
-const ONESIGNAL_APP_ID =
-  process.env.ONESIGNAL_APP_ID || 'e48ad365-7297-4a70-b077-7f56c6fa3d01';
-const ONE_SIGNAL_SMS_FROM = process.env.ONE_SIGNAL_SMS_FROM || '+13214154713';
+const ONESIGNAL_REST_API_KEY = process.env.ONESIGNAL_REST_API_KEY;
+const ONESIGNAL_APP_ID = process.env.ONESIGNAL_APP_ID;
+const ONE_SIGNAL_SMS_FROM = '+13214154713';
 
 const app_key_provider = {
   getToken() {
