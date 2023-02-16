@@ -3,7 +3,12 @@ import * as OneSignal from '@onesignal/node-onesignal';
 
 const ONESIGNAL_REST_API_KEY = process.env.ONESIGNAL_REST_API_KEY;
 const ONESIGNAL_APP_ID = process.env.ONESIGNAL_APP_ID;
-const ONE_SIGNAL_SMS_FROM = '+13214154713';
+const ONE_SIGNAL_SMS_FROM = process.env.ONE_SIGNAL_SMS_FROM || '+13214154713';
+const EMAIL_TEMPLATE =
+  process.env.EMAIL_TEMPLATE || '2b20dda0-e529-4bb9-b4b3-e051426e7834';
+
+const SMS_TEMPLATE =
+  process.env.SMS_TEMPLATE || '2b20dda0-e529-4bb9-b4b3-e051426e7834';
 
 const app_key_provider = {
   getToken() {
@@ -35,7 +40,7 @@ export class AppService {
       notification.included_segments = ['Subscribed Users'];
     }
     notification.email_subject = 'This is test email';
-    notification.template_id = '2b20dda0-e529-4bb9-b4b3-e051426e7834';
+    notification.template_id = EMAIL_TEMPLATE;
 
     const { id } = await client.createNotification(notification);
 
@@ -52,7 +57,7 @@ export class AppService {
     notification.app_id = ONESIGNAL_APP_ID;
     notification.included_segments = ['Subscribed Users'];
     notification.sms_from = ONE_SIGNAL_SMS_FROM;
-    notification.template_id = '714668fb-c24b-41f3-a96a-205f1cda72bc';
+    notification.template_id = SMS_TEMPLATE;
 
     const { id } = await client.createNotification(notification);
 
